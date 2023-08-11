@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background:url(./emoji.webp) ;
+            background-repeat: no-repeat;
+            background-size: cover;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        .container{
+            max-width: 60vw;
+            height: 500px;
+            background: #131419;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 45px 65px rgba(0,0,0,0.50), 0 35px 22px rgba(0,0,0,0.16);
+        }
+        .joke{
+            color: white;
+            text-align: center;
+            margin:3rem ;
+            opacity: 0;
+            height: 350px;
+            padding-top: 2rem;
+            font-size: 1.5rem;
+        }
+        .random{
+            padding: 1rem;
+            font-size: 1.2rem;
+            color:#131419 ;
+            font-weight: 600;
+            background-color: #FFAC24;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .imgbox{
+            width: 150px;
+            height: 150px;
+
+        }
+        .fade{
+             opacity: 1;
+             transition: opacity 1.5s;
+        }
+        img{
+            width: 100%;
+            border-radius: 50%;
+            
+            
+        }
+        @media screen and (max-device-width: 480px){
+    html{
+        font-size: 50%;
+    } 
+    body{
+        background: #FFAC24;
+    }
+    .container{
+        height: 400px;
+        margin-top: auto;
+    }
+    .random{
+        margin-top: -31rem;
+    }
+    .imgbox{
+        height: 100px;
+        width: 100px;
+    }
+
+}
+@media screen and (min-device-width: 481px)
+    and (max-device-width: 1024px) {
+    html{
+        font-size: 60%;
+    }
+    body{
+        background: #FFAC24;
+    }
+
+
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="imgbox">
+            <img src="https://i.pinimg.com/originals/53/60/29/536029191782589ee5e9b220ffa3ad66.png" alt="">
+        </div>
+        <p class="joke fade">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione quidem exercitationem quis nihil laborum delectus deserunt omnis, in eaque neque.
+        </p>
+        <button class="random">Get Randome Joke</button>
+    </div>
+    <script>
+        const jokeContainer=document.querySelector(".joke");
+        const btn=document.querySelector(".random");
+        const url="https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single";
+        let getJoke=()=>{
+            jokeContainer.classList.remove("fade");
+            fetch(url)
+            .then(data=>data.json())
+            .then(item=>{
+                jokeContainer.textContent=`${item.joke}`;
+                jokeContainer.classList.add("fade");
+            })
+        }
+        getJoke();
+        btn.addEventListener('click',getJoke);
+
+    </script>
+</body>
+</html>
