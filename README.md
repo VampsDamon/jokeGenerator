@@ -41,7 +41,7 @@ To run this project, you'll need:
 1. Clone the repository to your local machine using:
 
    ```bash
-   git clone https://github.com/your-username/random-joke-generator.git
+   git clone [https://github.com/your-username/random-joke-generator.git](https://github.com/VampsDamon/jokeGenerator.git)
 
 Navigate to the project directory:
 cd random-joke-generator
